@@ -9,7 +9,7 @@
         <th>Equipo Local</th>
         <th>Equipo Visita</th>
         <th>Fecha Partido</th>
-        <th>Pronostico</th>
+        <th>Quien gana?</th>
       </thead>
       <tbody>
         {% if partidos %}
@@ -19,7 +19,9 @@
           <td>{{ partido.eq_visita }}</td>
           <td>{{ partido.fecha }}</td>
           <td>
-            <input type="text" name="a_partido_id={{ partido.id }}">
+            <input type="radio" name="a_partido_id={{ partido.id }}" value="1"> Gana local<br>
+            <input type="radio" name="a_partido_id={{ partido.id }}" value="2"> Gana visita<br>
+            <input type="radio" name="a_partido_id={{ partido.id }}" value="3"> Empate
           </td>
         </tr>
         {% endfor %}

@@ -43,5 +43,6 @@ def polla(request, username):
         return render(request, 'polla/polla.html', contexto)
 
 def resultados(request, score):
-    contexto = {'score' : score}
+    partidos = Partido.objects.all().order_by('id')
+    contexto = {'score' : score, 'partidos' : partidos}
     return render(request, 'polla/resultados.html', contexto)

@@ -25,7 +25,7 @@ SECRET_KEY = 'e0+4nhx$-=iv28pgtx)^s(*qb^9l7v$m^gdl538w2iu#cpv=ac'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['polla-game.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
