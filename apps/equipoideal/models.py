@@ -29,7 +29,7 @@ class Formaciones(models.Model):
     def __str__(self):
         return '{} - {} - {}'.format(self.cantidad_defensas, self.cantidad_centrocampistas, self.cantidad_delanteros)
 
-class ParticipacionEquipoIdeal:
+class ParticipacionEquipoIdeal(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     ataque = models.FloatField()
     defensa = models.FloatField()

@@ -11,7 +11,7 @@
         - {{formacion.cantidad_centrocampistas}}
         - {{formacion.cantidad_delanteros}}</h2>
       <h3>Arqueros:</h3>
-      <select name="arquero">
+      <select name="jugador">
       {% for arquero in arqueros %}
         <option value={{arquero.id}}>{{arquero.nombre}} {{arquero.apellido}} | {{arquero.equipo}}</option>
       {% endfor %}
@@ -19,7 +19,7 @@
 
       <h3>Defensas:</h3>
       {% for defs in lst_defs %}
-      <select name="defensa{{index}}">
+      <select name="jugador">
         {% for defensa in defs %}
           <option value={{defensa.id}}>{{defensa.nombre}} {{defensa.apellido}} | {{defensa.equipo}}</option>
         {% endfor %}
@@ -28,7 +28,7 @@
 
       <h3>Centrocampistas:</h3>
       {% for cents in lst_cent %}
-      <select name="centrocampista{{index}}">
+      <select name="jugador">
         {% for centrocampista in cents %}
           <option value={{centrocampista.id}}>{{centrocampista.nombre}} {{centrocampista.apellido}} | {{centrocampista.equipo}}</option>
         {% endfor %}
@@ -37,7 +37,7 @@
 
       <h3>Delanteros:</h3>
       {% for delas in lst_dela %}
-      <select name="delantero{{index}}">
+      <select name="jugador">
         {% for delantero in delas %}
           <option value={{delantero.id}}>{{delantero.nombre}} {{delantero.apellido}} | {{delantero.equipo}}</option>
         {% endfor %}

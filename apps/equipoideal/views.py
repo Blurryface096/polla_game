@@ -13,7 +13,41 @@ def index(request):
 
 def jugadores(request, formacion_id):
     if request.method == 'POST':
-        return render(request, 'equipoideal/resultados.html')
+        rawform = request.body
+        params = str(rawform).split('&')
+        print(params)
+        jugadores = []
+        for i in range(0, len(params)):
+            if 'jugador' in params[i]:
+                old = params[i].split('=')[1]
+                n1 = old.replace("'","")
+                n2 = n1.replace('"','')
+                jugadores.append(int(n2))
+
+        ataque = 0
+        defensa = 0
+        velocidad = 0
+        for j in jugadores:
+            jugador = Jugador.objects.get(id=j)
+            ataque = ataque + jugador.ataque
+            defensa = defensa + jugador.defensa
+            velocidad = velocidad + jugador.velocidad
+
+        ataque_medio = round(ataque/11, 3)
+        print(ataque_medio)
+        defensa_media = round(defensa/11, 3)
+        print(defensa_media)
+        velocidad_media = round(velocidad/11, 3)
+        print(velocidad_media)
+
+        total = round((ataque_medio + defensa_media + velocidad_media) / 3, 3)
+        print(total)
+
+        contexto = {'ataque_medio' : ataque_medio,
+        'defensa_media' : defensa_media,
+        'velocidad_media' : velocidad_media,
+        'total' : total }
+        return render(request, 'equipoideal/resultados.html', contexto)
     else:
         formacion = Formaciones.objects.get(id=formacion_id)
         jugadores = Jugador.objects.all().order_by('id')
