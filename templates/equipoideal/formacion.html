@@ -8,7 +8,7 @@
       {% if formaciones %}
       <select name="formacion">
         {% for formacion in formaciones %}
-        <option value="formacion.id">{{formacion.cantidad_defensas}} -
+        <option value={{formacion.id}}>{{formacion.cantidad_defensas}} -
           {{formacion.cantidad_centrocampistas}} -
           {{formacion.cantidad_delanteros}}</option>
         {% endfor %}

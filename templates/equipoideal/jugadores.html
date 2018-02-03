@@ -1,23 +1,56 @@
 {% extends 'polla/base.html' %}
-{% block title %} Elige tu formacion! {% endblock %}
+{% block title %} Elige a tus jugadores! {% endblock %}
 {% block content %}
 <div class="container">
-  <form method="post">
-    {% csrf_token %}
-    <div align="center">
-      {% if formaciones %}
-      <select name="formacion">
-        {% for formacion in formaciones %}
-        <option value="formacion.id">{{formacion.cantidad_defensas}} -
-          {{formacion.cantidad_centrocampistas}} -
-          {{formacion.cantidad_delanteros}}</option>
+  <div align="center">
+    <form method="post">
+      {% csrf_token %}
+    <h2>Jugadores:</h2>
+    {% if formacion %}
+      <h2>Formacion elegida: {{formacion.cantidad_defensas}}
+        - {{formacion.cantidad_centrocampistas}}
+        - {{formacion.cantidad_delanteros}}</h2>
+      <h3>Arqueros:</h3>
+      <select name="arquero">
+      {% for arquero in arqueros %}
+        <option value={{arquero.id}}>{{arquero.nombre}} {{arquero.apellido}} | {{arquero.equipo}}</option>
+      {% endfor %}
+      </select>
+
+      <h3>Defensas:</h3>
+      {% for defs in lst_defs %}
+      <select name="defensa{{index}}">
+        {% for defensa in defs %}
+          <option value={{defensa.id}}>{{defensa.nombre}} {{defensa.apellido}} | {{defensa.equipo}}</option>
         {% endfor %}
       </select>
-      {% endif %}
-    </div>
+      {% endfor %}
+
+      <h3>Centrocampistas:</h3>
+      {% for cents in lst_cent %}
+      <select name="centrocampista{{index}}">
+        {% for centrocampista in cents %}
+          <option value={{centrocampista.id}}>{{centrocampista.nombre}} {{centrocampista.apellido}} | {{centrocampista.equipo}}</option>
+        {% endfor %}
+      </select>
+      {% endfor %}
+
+      <h3>Delanteros:</h3>
+      {% for delas in lst_dela %}
+      <select name="delantero{{index}}">
+        {% for delantero in delas %}
+          <option value={{delantero.id}}>{{delantero.nombre}} {{delantero.apellido}} | {{delantero.equipo}}</option>
+        {% endfor %}
+      </select>
+      {% endfor %}
+    {% endif %}
+    <br>
+    <br>
     <div align="center">
-        <button class="btn" type="submit">Siguiente!</button>
+      <br>
+      <button type="submir" class="btn">Enviar Equipo Ideal</button>
     </div>
-  </form>
+    </form>
+  </div>
 </div>
 {% endblock %}

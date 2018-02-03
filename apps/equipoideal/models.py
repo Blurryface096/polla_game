@@ -1,5 +1,5 @@
 from django.db import models
-from apps.polla.models import Equipo
+from apps.polla.models import Equipo, Usuario
 
 # Create your models here.
 class Demarcacion(models.Model):
@@ -28,3 +28,14 @@ class Formaciones(models.Model):
 
     def __str__(self):
         return '{} - {} - {}'.format(self.cantidad_defensas, self.cantidad_centrocampistas, self.cantidad_delanteros)
+
+class ParticipacionEquipoIdeal:
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    ataque = models.FloatField()
+    defensa = models.FloatField()
+    velocidad = models.FloatField()
+    total = models.FloatField()
+    fecha = models.DateTimeField()
+
+    def __str__(self):
+        return '{} / {}'.format(self.usuario, self.fecha)
